@@ -28,3 +28,7 @@ mysql_data/
 
 # WSL
 .cache/
+
+# AWS
+aws/
+awscliv2.zip

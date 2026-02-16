@@ -24,4 +24,4 @@ app.include_router(report.router, prefix="/api")
 
 @app.get("/")
 def health_check():
-    return {"status": "CSAT API is running"}
+    return {"status": "CSAT API is running - CI/CD pipeline is working!"}
