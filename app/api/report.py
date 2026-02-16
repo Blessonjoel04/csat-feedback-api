@@ -40,3 +40,18 @@ def get_report(
         "average_last_90_days": round(avg_90, 2) if avg_90 else 0,
         "unique_ratings_count": unique_ratings or 0,
     }
+
+@router.get("/report/distribution")
+def get_distribution(
+    db: Session = Depends(get_db),
+    current_user: str = Depends(get_current_user),
+):
+    distribution = {}
+
+    for i in range(1, 6):
+        count = db.query(func.count(Feedback.id)).filter(
+            Feedback.rating == i
+        ).scalar()
+        distribution[str(i)] = count or 0
+
+    return distribution
